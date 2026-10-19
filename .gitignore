@@ -1,0 +1,8 @@
+__pycache__/
+.pytest_cache/
+.venv/
+.venv311/
+mlruns/
+artifacts/*.joblib
+data/raw/*.data
+data/processed/*.csv
