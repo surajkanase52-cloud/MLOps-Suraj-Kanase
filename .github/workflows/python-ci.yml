@@ -1,5 +1,8 @@
 name: mlops-ci
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
 jobs:
   test-train:
     runs-on: ubuntu-latest
@@ -9,7 +12,7 @@ jobs:
         with: {python-version: "3.11"}
       - run: pip install -r requirements.txt
       - run: ruff check .
-      - run: pytest -q
+      - run: python -m pytest -q
       - run: python -m src.download_data
       - run: python -c "from src.data import load_and_clean; load_and_clean()"
       - run: python -m src.train
